@@ -31,9 +31,12 @@ def read_cb(skin_cfg: dict):
     skin_path = os.path.join(read_path(skin_cfg), skin_name)
     _Skin = json.load(open(skin_path, "r"))
     return Color_Board(
-        tuple(_Skin["1"]), tuple(_Skin["2"]), tuple(_Skin["4"]), tuple(_Skin["8"]),
-        tuple(_Skin["16"]), tuple(_Skin["32"]), tuple(_Skin["64"]), tuple(_Skin["128"]),
-        tuple(_Skin["256"]), tuple(_Skin["512"]), tuple(_Skin["1024"]), tuple(_Skin["2048"]),
+        tuple(_Skin["1"]), tuple(_Skin["2"]), 
+        tuple(_Skin["4"]), tuple(_Skin["8"]),
+        tuple(_Skin["16"]), tuple(_Skin["32"]), 
+        tuple(_Skin["64"]), tuple(_Skin["128"]),
+        tuple(_Skin["256"]), tuple(_Skin["512"]), 
+        tuple(_Skin["1024"]), tuple(_Skin["2048"]),
         tuple(_Skin["background"])
     )
 
