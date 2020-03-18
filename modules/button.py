@@ -4,6 +4,10 @@ import sys
 import os
 
 
+def Empty_Function(*args):
+    pass
+
+
 class Rect_Setting():
     def __init__(self, left: int, top: int, width: int, height: int):
         self.left = left
@@ -19,7 +23,7 @@ class Lable():
 
     def __init__(self, rect_setting: Rect_Setting, screen,
                  color: tuple, text: str, text_color: str, 
-                 text_size: int, font: str):
+                 text_size: int, font: str, status: bool = True):
         '''
         Inialize the lable
         '''
@@ -30,6 +34,7 @@ class Lable():
         self.font = font
         self.text_size = text_size
         self.rect_setting = rect_setting
+        self.status = status
         self.init_rect()
 
     def init_rect(self):
@@ -48,8 +53,11 @@ class Lable():
         self.text_rect.center = self.rect.center
     
     def draw(self):
-        self.screen.fill(self.color, self.rect)
-        self.screen.blit(self.text_img, self.text_rect)
+        if self.status is True:
+            self.screen.fill(self.color, self.rect)
+            self.screen.blit(self.text_img, self.text_rect)
+        else:
+            return
 
 class Button():
     '''
@@ -57,17 +65,19 @@ class Button():
     And the active color.
     '''
     def __init__(self, screen, lable: Lable, event,
-                 status: bool, active_color: tuple):
+                 status: bool, active_color: tuple, 
+                 unevent=Empty_Function):
         self.lable = lable
         self.event = event
         self.status = status
-        self.normal_color = self.lable.color
-        self.active_color = active_color
+        self.normal_color = self.lable.color[:]
+        self.active_color = active_color[:]
+        self.unevent = unevent
     
     def draw(self):
         if self.status is True:
-            self.lable.color = self.active_color
+            self.lable.color = self.active_color[:]
             self.lable.draw()
         else:
-            slef.lable.color = self.normal_color
+            self.lable.color = self.normal_color[:]
             self.lable.draw()
