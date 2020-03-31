@@ -4,9 +4,7 @@ Written by Piterator develop team.
 
 ### Progress | 进度
 
-$$
-0.1\%
-$$
+$0.1\%$
 
 ### feature(todo) | 特性(完成列表)
 
